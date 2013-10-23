@@ -1,0 +1,37 @@
+<h1>Welcome to Rewsly!</h1>
+
+<h3>All Stories</h3>
+<ul>
+	<% @stories.each do |story| %>
+		<li><%= link_to story.title, story %></li>	
+	<% end %>
+</ul>
+
+<h3>Stories with 4+ upvotes:</h3>
+<ul>
+	<% @stories.each do |story| %>
+		<% if (story.upvotes).to_i >= 4 %>
+			<li><%= link_to story.title, story %></li>	
+		<% end %>
+	<% end %>
+</ul>
+
+<h3>Stories Created Today: </h3>
+<ul>
+	<% @stories.each do |story| %>
+		<% if story.created_at = Date.today %>
+			<li><%= link_to story.title, story %></li>	
+		<% end %>
+	<% end %>
+</ul>
+
+<h3>Search for a movie: </h3>
+	<%= form_tag stories_path, :method => 'get' do %>
+	  <p>
+	    <%= text_field_tag :search, params[:search] %>
+	    <%= submit_tag "Search", :name => nil %>
+	  </p>
+	<% end %>
+
+<%= link_to "Add new", new_story_path %>
+

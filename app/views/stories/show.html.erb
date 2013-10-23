@@ -1,0 +1,10 @@
+<h1>Current viewing: <%= @story.title %></h1>
+	<p>
+		<ul>
+			<li>Category: <%= @story.category %></li>
+			<li>Upvotes: 	<%= @story.upvotes %></li>
+			<li>Link: 		<%= link_to @story.link, @story.link %></li>
+		</ul>
+	</p>
+
+<%= link_to "Back Home", stories_path %>
